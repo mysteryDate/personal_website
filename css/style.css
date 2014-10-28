@@ -1,4 +1,18 @@
-#aaronk {
+* {
+	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 100;
+	font-size: 1.1em;
+}
+
+strong {
+	font-weight: 200;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+#mainTitle {
 	font-size: 4em;
 	font-family: myFranny;
 }
@@ -23,23 +37,26 @@
 	width: 33%;
 }
 
-#underline {
+#underline #line{
+	position: relative;
+	top: 5px;
 	height: 1px;
 	background-color: black;
+	z-index: -1;
 }
 
 #underline .highlight {
 	position: absolute;
-	height: 5px;
+	height: 10px;
+	opacity: 0.2;
 	background-color: blue;
 }
 
 .panel div {
 	width: 500px;
 	height: 281px;
-	display: none;
+	display: inline-block;
 	overflow: hidden;
-	visibility: hidden;
 }
 
 #portfolio img {
@@ -49,4 +66,12 @@
 @font-face {
 	font-family: myFranny;
 	src: url(../bin/FranckLloydExtra-Regular.otf);
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: #FF0000;
 }

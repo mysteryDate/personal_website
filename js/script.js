@@ -5,12 +5,9 @@ console.log(isMobile);
 
 $(document).ready(function(){
 
+	var NUM_HIGHLIGHTS = 15;
 	// Lets openFrameworks this shiz
 	function setup() {
-		// Create underlining
-		for (var i = 0; i < 5; i++) {
-			$('#underline').append("<div class='highlight'></div>");
-		};
 
 		var $selected = $("#mainNavigation .selected");
 		var selectedWidth = $selected.width();
@@ -22,7 +19,18 @@ $(document).ready(function(){
 			$(this).css("left", "calc(-"+w/2+"px + "+(i*33+17)+"%)");
 		});
 
+		// Create underlining
+		for (var i = 0; i < NUM_HIGHLIGHTS; i++) {
+			$('#underline').append("<div class='highlight'></div>");
+		};
+		$("#underline .highlight").each(function(i, elem) {
+			$(this).css({
+				backgroundColor: "hsl("+i*360/NUM_HIGHLIGHTS+", 100%, 50%)",
+				// opacity: 1/NUM_HIGHLIGHTS
+			});
+		});
 
+		window.setTimeout(function(){update()}, 500);
 	}
 
 	function update() {
@@ -31,19 +39,30 @@ $(document).ready(function(){
 		var selectedWidth = $selected.width();
 
 		$.each( $("#underline .highlight"), function(i, elem) {
-			$(this).delay(i*100).velocity({
+			$(this).delay(i*500/NUM_HIGHLIGHTS).velocity({
 				width: selectedWidth + 4,
 				left: $selected.position().left - 2
-			}, {duration: 1000});
+			}, 
+			1000,
+			[250,15]);
 		});
 	}
 
+	// Handlers!
 	$("#mainNavigation div").on('click', function(e){
 		$("#mainNavigation .selected").removeClass("selected");
 		$(this).addClass("selected");
 		update();
 	});
+	// $("#mainNavigation").on('mousemove', function(e){
+	// 	$("#underline .highlight").first()
+	// 		.css("left", e.offsetX);
+	// });
+	$("#mainNavigation div").on('mouseenter', function(e){
+		var self = this;
+		$("#underline .highlight").first()
+			.css("left", $(self).position().left - 2);
+	});
 
 	setup();
-	update();
 });
