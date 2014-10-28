@@ -1,0 +1,52 @@
+#aaronk {
+	font-size: 4em;
+	font-family: myFranny;
+}
+
+
+#mainNavigation {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#mainNavigation div {
+    position: absolute;
+    /*visibility: hidden;*/
+    height: auto;
+    width: auto;
+    white-space: nowrap; /* Thanks to Herb Caudill comment */
+    cursor: pointer;
+}
+
+#mainNavigation td {
+	text-align: center;
+	width: 33%;
+}
+
+#underline {
+	height: 1px;
+	background-color: black;
+}
+
+#underline .highlight {
+	position: absolute;
+	height: 5px;
+	background-color: blue;
+}
+
+.panel div {
+	width: 500px;
+	height: 281px;
+	display: none;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+#portfolio img {
+	width: 100%;
+}
+
+@font-face {
+	font-family: myFranny;
+	src: url(../bin/FranckLloydExtra-Regular.otf);
+}
