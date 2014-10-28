@@ -30,6 +30,7 @@ $(document).ready(function(){
 			});
 		});
 
+		$("body").css('width', $(window).width());
 		window.setTimeout(function(){update()}, 500);
 	}
 
@@ -63,6 +64,10 @@ $(document).ready(function(){
 		$("#underline .highlight").first()
 			.css("left", $(self).position().left - 2);
 	});
+
+	// window.onresize = function(e){
+	// 	setup();
+	// });
 
 	setup();
 });

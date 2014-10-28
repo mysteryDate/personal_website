@@ -1,3 +1,19 @@
+html, body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+@font-face {
+	font-family: myFranny;
+	src: url(../bin/FranckLloydExtra-Regular.otf);
+}
+
+@font-face {
+	font-family: helveticy;
+	src: url(../bin/HelveticaNeue-UltraLight.otf);
+}
+
+
 * {
 	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 100;
@@ -61,11 +77,6 @@ h2 {
 
 #portfolio img {
 	width: 100%;
-}
-
-@font-face {
-	font-family: myFranny;
-	src: url(../bin/FranckLloydExtra-Regular.otf);
 }
 
 a {
