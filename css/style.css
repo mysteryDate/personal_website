@@ -1,6 +1,7 @@
 html, body {
 	width: 100%;
 	overflow-x: hidden;
+	font-size: 1.2em;
 }
 
 @font-face {
@@ -17,7 +18,6 @@ html, body {
 * {
 	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 100;
-	font-size: 1.1em;
 }
 
 strong {
@@ -33,6 +33,9 @@ h2 {
 	font-family: myFranny;
 }
 
+#gifLogo {
+	position: absolute;
+}
 
 #mainNavigation {
 	width: 100%;
