@@ -52,6 +52,10 @@ h2 {
     white-space: nowrap; /* Thanks to Herb Caudill comment */
     cursor: pointer;
 }
+/*
+#mainNavigation div.selected {
+	color: yellow;
+}*/
 
 #mainNavigation td {
 	text-align: center;
@@ -76,6 +80,10 @@ h2 {
 	height: 10px;
 	opacity: 0.2;
 	background-color: blue;
+}
+
+.section {
+	display: none;
 }
 
 .panel div {
