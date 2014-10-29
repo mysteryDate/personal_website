@@ -2,6 +2,7 @@ html, body {
 	width: 100%;
 	overflow-x: hidden;
 	font-size: 1.2em;
+	margin: 0;
 }
 
 @font-face {
@@ -30,6 +31,7 @@ h2 {
 
 #mainTitle {
 	font-size: 4em;
+	line-height: 1;
 	font-family: myFranny;
 }
 
@@ -56,6 +58,11 @@ h2 {
 	width: 33%;
 }
 
+#underline {
+	position: relative;
+	height: 30px;
+}
+
 #underline #line{
 	position: relative;
 	top: 5px;
@@ -76,6 +83,10 @@ h2 {
 	height: 281px;
 	display: inline-block;
 	overflow: hidden;
+}
+
+span.sub {
+	font-size: 20px;
 }
 
 #portfolio img {
