@@ -1,0 +1,82 @@
+[
+  {
+    "id": 0,
+    "name": "Argenteuil",
+    "category": "interaction",
+    "thumbnail": "argenteuil.jpg",
+    "embed": "http://player.vimeo.com/video/106615049",
+    "link": "http://museeregionaldargenteuil.ca/",
+    "title": "Interactive Table",
+    "description": "A project for La Musée Regional D'Argenteuil"
+  },
+  {
+    "id": 1,
+    "name": "SensePlay",
+    "category": "interaction",
+    "thumbnail": "senseplay.jpg",
+    "embed": "http://www.youtube.com/embed/FF7Eu5GGW6E",
+    "link": "sense-play.com",
+    "title": "SensePlay",
+    "description": "A commercial hardware/software platform for incorperating sensors into commercial applications"
+  },
+  {
+    "id": 2,
+    "name": "AUMI",
+    "category": "interaction",
+    "thumbnail": "aumi.jpg",
+    "embed": "http://www.youtube.com/embed/Jdn3sfOFEQM",
+    "link": "http://deeplistening.org/site/adaptiveuse",
+    "title": "The Adaptive Use Musical Instrument",
+    "description": "A digital musical interface for children with physical handicaps"
+  },
+  {
+    "id": 3,
+    "name": "Libmapper",
+    "category": "interaction",
+    "thumbnail": "libmapper.jpg",
+    "embed": "http://player.vimeo.com/video/57489444",
+    "link": "libmapper.org",
+    "title": "Libmapper",
+    "description": "GUI design for the Libmapper musical mapping library"
+  },
+  {
+    "id": 4,
+    "name": "Boulevard",
+    "category": "webdesign",
+    "thumbnail": "boulevard.png",
+    "embed": "http://www.boulevardtranslation.com",
+    "link": "http://www.boulevardtranslation.com",
+    "title": "Traduction Boulevard Translation",
+    "description": "Creation of a biligual website for the Boulevard translation group"
+  },
+  {
+    "id": 5,
+    "name": "Elrichman",
+    "category": "webdesign",
+    "thumbnail": "elrichman.png",
+    "embed": "http://www.elrichman.com",
+    "link": "http://www.elrichman.com",
+    "title": "Elrichman.com",
+    "description": "Design of a website for Elrichman, the greatest musician of our time."
+  },
+  {
+    "id": 6,
+    "name": "MissElizabeth",
+    "category": "webdesign",
+    "thumbnail": "misselizabeth.png",
+    "embed": "http://www.misselizabethmusic.com",
+    "link": "http://www.misselizabethmusic.com",
+    "title": "MissElizabethMusic.com",
+    "description": "The website of Miss Elizabeth, a band from Toronto"
+  },
+  {
+    "id": 7,
+    "name": "Farragoes",
+    "category": "webdesign",
+    "thumbnail": "farragoes.png",
+    "embed": "http://www.farragoes.net",
+    "link": "http://www.farragoes.net",
+    "title": "Farragoes.net",
+    "description": "The website of Farragoes, a solo-artist from Toronto"
+  }
+]

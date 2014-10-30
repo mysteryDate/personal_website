@@ -1,7 +1,11 @@
+	/**************/
+	/* Main stuff */
+	/**************/
 html, body {
 	width: 100%;
 	overflow-x: hidden;
 	font-size: 1.2em;
+	margin: 0;
 }
 
 @font-face {
@@ -13,7 +17,6 @@ html, body {
 	font-family: helveticy;
 	src: url(../bin/HelveticaNeue-UltraLight.otf);
 }
-
 
 * {
 	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -28,8 +31,24 @@ h2 {
 	font-size: 1.5em;
 }
 
+	span.sub {
+		font-size: 20px;
+	}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: #FF0000;
+}
+
+	/*************/
+	/* Masthead */
+	/************/
 #mainTitle {
 	font-size: 4em;
+	line-height: 1;
 	font-family: myFranny;
 }
 
@@ -37,6 +56,9 @@ h2 {
 	position: absolute;
 }
 
+	/**************/
+	/* Navigation */
+	/**************/
 #mainNavigation {
 	width: 100%;
 	border-collapse: collapse;
@@ -50,10 +72,19 @@ h2 {
     white-space: nowrap; /* Thanks to Herb Caudill comment */
     cursor: pointer;
 }
+/*
+#mainNavigation div.selected {
+	color: yellow;
+}*/
 
 #mainNavigation td {
 	text-align: center;
 	width: 33%;
+}
+
+#underline {
+	position: relative;
+	height: 30px;
 }
 
 #underline #line{
@@ -71,6 +102,27 @@ h2 {
 	background-color: blue;
 }
 
+	/*************/
+	/* Portfolio */
+	/*************/
+#mainScreen {
+	border-bottom: 1px solid black;
+	background-color: hsla(360, 50%, 50%, 0.5);
+}
+
+#mainScreen iframe {
+	width: 80%;
+	margin: 0 10%;
+}
+
+#mainScreen p {
+	margin: 1em 10%;
+}
+
+.section {
+	display: none;
+}
+
 .panel div {
 	width: 500px;
 	height: 281px;
@@ -80,12 +132,7 @@ h2 {
 
 #portfolio img {
 	width: 100%;
+	height: 100%;
 }
 
-a {
-	text-decoration: none;
-}
 
-a:visited {
-	color: #FF0000;
-}
