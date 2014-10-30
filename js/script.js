@@ -64,10 +64,16 @@ $(document).ready(function(){
 
 		add_handlers();
 		// $("body").css('width', $(window).width());
-		window.setTimeout(function(){change_section()}, 500);
+		// window.setTimeout(function(){change_section()}, 500);
 	}
 
-	function change_section() {
+	function change_section(newSection) {
+
+		$('.section.selected').velocity('fadeOut');
+		$("#mainNavigation .selected").removeClass("selected");
+		$(newSection).addClass("selected");
+		var textid = '#' + $(newSection).children('h2').html().toLowerCase();
+		$(textid).addClass('selected').velocity('fadeIn');
 
 		$("#mainScreen").css('display', 'none');
 		$("*").off(".mainScreen");
@@ -86,7 +92,6 @@ $(document).ready(function(){
 	}
 
 	function set_main_screen(project) {
-		$("#underline").velocity('scroll', {offset: 10});
 		
 		var $mainScreen = $("#mainScreen");
 		var $iframe = $("#mainScreen iframe");
@@ -100,7 +105,7 @@ $(document).ready(function(){
 			if( $iframe.attr("src") != project.embed ) {
 				$mainScreen.children(":not(#closeSwitch)").css({opacity: 0});
 			}
-			$("#underline").velocity('scroll', {offset: 10});
+			$("#line").velocity('scroll');
 			$mainScreen.velocity("slideDown", {
 				complete: function() {
 				 set_iframe(); 
@@ -109,8 +114,7 @@ $(document).ready(function(){
 		}
 		else {
 			var underline = $("#underline")
-			$("#underline").velocity('scroll', {
-				offset: 5, 
+			$("#line").velocity('scroll', { 
 				complete: function() { 
 					set_iframe();
 				}
@@ -145,12 +149,14 @@ $(document).ready(function(){
 
 		// Handlers!
 		$("#mainNavigation div").on('click', function(e){
-			$("#mainNavigation .selected").removeClass("selected");
-			$('.section').css('display', 'none');
-			$(this).addClass("selected");
-			var textid = '#' + $(this).children('h2').html().toLowerCase();
-			$(textid).css('display', 'block')
-			change_section();
+			change_section(this);
+			// var self = this
+			// $('body').velocity('scroll', {
+			// 	complete: function() {
+			// 		$('.section.selected').velocity('fadeOut');
+			// 		change_section(self);
+			// 	}
+			// });
 		});
 		// $("#mainNavigation").on('mousemove', function(e){
 		// 	$("#underline .highlight").first()
