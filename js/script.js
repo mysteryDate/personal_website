@@ -86,7 +86,7 @@ $(document).ready(function(){
 	}
 
 	function set_main_screen(project) {
-		$("#underline").velocity('scroll', {offset: 5});
+		$("#underline").velocity('scroll', {offset: 10});
 		
 		var $mainScreen = $("#mainScreen");
 		var $iframe = $("#mainScreen iframe");
@@ -100,7 +100,7 @@ $(document).ready(function(){
 			if( $iframe.attr("src") != project.embed ) {
 				$mainScreen.children(":not(#closeSwitch)").css({opacity: 0});
 			}
-			$("#underline").velocity('scroll', {offset: 5});
+			$("#underline").velocity('scroll', {offset: 10});
 			$mainScreen.velocity("slideDown", {
 				complete: function() {
 				 set_iframe(); 
