@@ -68,9 +68,9 @@ $(document).ready(function(){
 	}
 
 	function change_section() {
-		// HACK AWAY!
 
-		// $("#mainScreen").empty();
+		$("#mainScreen").css('display', 'none');
+		$("*").off(".mainScreen");
 
 		var $selected = $("#mainNavigation .selected");
 		var selectedWidth = $selected.width();
@@ -94,9 +94,16 @@ $(document).ready(function(){
 				width: windowWidth*0.6,
 				height: windowWidth*0.6*9/16
 			});
+			$("#closeSwitch").css("backgroundPositionX", 0);
 			$mainScreen.velocity("slideDown");
 		}
-		switch_main_screen(project);
+
+		// See if it's actually changed
+		if( $iframe.attr("src") != project.embed ) {
+			$mainScreen.children(":not(#closeSwitch)").velocity({opacity: 0});
+			$iframe.attr('src', project.embed);
+			$("#mainScreen p").html("<strong>"+project.title+"</strong><br>"+project.description);
+		}
 
 		$iframe.on('load.mainScreen', function(e) {
 			$(this).delay(100).velocity({opacity: 1});
@@ -104,16 +111,12 @@ $(document).ready(function(){
 		});
 
 		$("#closeSwitch").on('click.mainScreen', function(e) {
-			$(this).css('backgroundPositionX', '-40px');
+			$(this).css('backgroundPositionX', "-40px");
 			$mainScreen.velocity("slideUp");
+			$mainScreen.children(":not(#closeSwitch)").velocity({opacity: 0});
+			$iframe.attr('src', '');
 			$("*").off(".mainScreen");
 		});
-
-		function switch_main_screen (new_project) {
-			$mainScreen.children().velocity({opacity: 0});
-			$iframe.attr('src', new_project.embed);
-			$("#mainScreen p").html("<strong>"+project.title+"</strong><br>"+project.description);
-		}
 	}
 
 	function add_handlers(){
