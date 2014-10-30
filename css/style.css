@@ -1,3 +1,5 @@
+/* rgb(149,64,181) */
+
 /**************/
 /* Main stuff */
 /**************/
@@ -39,7 +41,11 @@
 		text-decoration: none;
 	}
 
-	a:visited {
+	a:hover {
+		opacity: 0.5;
+	}
+
+	a:visited, a:link {
 		color: rgb(0,0,238);
 	}
 
@@ -71,6 +77,10 @@
 	    width: auto;
 	    white-space: nowrap; /* Thanks to Herb Caudill comment */
 	    cursor: pointer;
+	}
+
+	#mainNavigation div:hover {
+		opacity: 0.5;
 	}
 
 	#mainNavigation h2 {
@@ -159,11 +169,23 @@
 		height: 281px;
 		display: inline-block;
 		overflow: hidden;
+		cursor: pointer;
+		position: relative;
 	}
 
 	#portfolio img {
 		width: 100%;
 		height: 100%;
+	}
+
+	.panel div p {
+		margin: 0;
+		z-index: 1;
+		position: absolute;
+		bottom: 0;
+		padding: 0 5px;
+		color: white;
+		background: hsla(240, 5%, 15%, 0.2);
 	}
 
 
