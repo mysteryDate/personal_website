@@ -87,6 +87,7 @@ $(document).ready(function(){
 
 	function set_main_screen(project) {
 		$("#underline").velocity('scroll', {offset: 5});
+		
 		var $mainScreen = $("#mainScreen");
 		var $iframe = $("#mainScreen iframe");
 		if($mainScreen.css('display') == "none") { // Create the screen
@@ -99,13 +100,21 @@ $(document).ready(function(){
 			if( $iframe.attr("src") != project.embed ) {
 				$mainScreen.children(":not(#closeSwitch)").css({opacity: 0});
 			}
-			$.Velocity.animate($mainScreen, "slideDown")
-				.then(function() {
-					window.setTimeout(function(){set_iframe()}, 500);
-				});
+			$("#underline").velocity('scroll', {offset: 5});
+			$mainScreen.velocity("slideDown", {
+				complete: function() {
+				 set_iframe(); 
+				}
+			});
 		}
 		else {
-			set_iframe();
+			var underline = $("#underline")
+			$("#underline").velocity('scroll', {
+				offset: 5, 
+				complete: function() { 
+					set_iframe();
+				}
+			});
 		}
 
 		// See if it's actually changed
