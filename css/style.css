@@ -102,37 +102,58 @@ a:visited {
 	background-color: blue;
 }
 
-	/*************/
-	/* Portfolio */
-	/*************/
-#mainScreen {
-	border-bottom: 1px solid black;
-	background-color: hsla(360, 50%, 50%, 0.5);
-}
+/*************/
+/* Portfolio */
+/*************/
+	/***************/
+	/* Main Screen */
+	/***************/
+		#mainScreen {
+			/*border-top: 1px solid black;*/
+			border-bottom: 1px solid black;
+			/*background-color: hsla(360, 50%, 50%, 0.5);*/
+			position: relative;
+			display: none;
+			top: -1em;
+			z-index: 1;
+		}
 
-#mainScreen iframe {
-	width: 80%;
-	margin: 0 10%;
-}
+		#mainScreen iframe {
+			width: 60%;
+			margin: 1em 20% 0 20%;
+			opacity: 0;
+		}
 
-#mainScreen p {
-	margin: 1em 10%;
-}
+		#mainScreen p {
+			margin: 1em 20%;
+			opacity: 0;
+		}
 
-.section {
-	display: none;
-}
+		#closeSwitch {
+			background-image: url("../bin/close.png");
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 50px;
+			width: 50px;
+			cursor: pointer;
+		}
+	/**************/
 
-.panel div {
-	width: 500px;
-	height: 281px;
-	display: inline-block;
-	overflow: hidden;
-}
+	.section {
+		display: none;
+	}
 
-#portfolio img {
-	width: 100%;
-	height: 100%;
-}
+	.panel div {
+		width: 500px;
+		height: 281px;
+		display: inline-block;
+		overflow: hidden;
+	}
+
+	#portfolio img {
+		width: 100%;
+		height: 100%;
+	}
 
 

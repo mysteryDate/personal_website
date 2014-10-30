@@ -18,9 +18,14 @@ function PortfolioItem() {
 $(document).ready(function(){
 
 	// Read in JSON
-	var portfolio_data;
+	var json_data;
+	var portfolio_data = {}; //HACK
 	$.getJSON("bin/portfolio.json", function(json) {
-		portfolio_data = json;
+		json_data = json;
+		for (var i = 0; i < json_data.length; i++) {
+			var name = json_data[i].name;
+			portfolio_data[name] = json_data[i];
+		};
 		setup();
 	});
 
@@ -50,9 +55,11 @@ $(document).ready(function(){
 		});
 
 		// Setup portfolio section
-		for (var i = 0; i < portfolio_data.length; i++) {
-			$('#'+portfolio_data[i].category).append("<div class='portfolioEntry' portfolio_data-id="+portfolio_data[i].id+"></div>");
-			$('#'+portfolio_data[i].category+' .portfolioEntry').last().append("<img src='bin/portfolio_thumbnails/"+portfolio_data[i].thumbnail+"'><img>");
+		for (var entry in portfolio_data) {
+			if (portfolio_data.hasOwnProperty(entry)) {
+				$('#'+portfolio_data[entry].category).append("<div class='portfolioEntry' portfolio_data-key="+entry+"></div>");
+				$('#'+portfolio_data[entry].category+' .portfolioEntry').last().append("<img src='bin/portfolio_thumbnails/"+portfolio_data[entry].thumbnail+"'><img>");
+			};
 		};
 
 		add_handlers();
@@ -63,7 +70,7 @@ $(document).ready(function(){
 	function change_section() {
 		// HACK AWAY!
 
-		$("#mainScreen").empty();
+		// $("#mainScreen").empty();
 
 		var $selected = $("#mainNavigation .selected");
 		var selectedWidth = $selected.width();
@@ -78,11 +85,35 @@ $(document).ready(function(){
 		});
 	}
 
-	function set_main_screen(project){
-		$("#mainScreen").empty().append("<iframe src="+project.embed+" frameborder='0' allowfullscreen>></iframe><p class='description'></p>");
-		var iframeWidth = $('#mainScreen iframe').width();
-		$("#mainScreen iframe").css('height', iframeWidth*9/16);
-		$("#mainScreen p").append("<strong>"+project.title+"</strong><br>"+project.description);
+	function set_main_screen(project) {
+		var $mainScreen = $("#mainScreen");
+		var $iframe = $("#mainScreen iframe");
+		if($mainScreen.css('display') == "none") { // Create the screen
+			var windowWidth = $(window).width();
+			$iframe.css({
+				width: windowWidth*0.6,
+				height: windowWidth*0.6*9/16
+			});
+			$mainScreen.velocity("slideDown");
+		}
+		switch_main_screen(project);
+
+		$iframe.on('load.mainScreen', function(e) {
+			$(this).delay(100).velocity({opacity: 1});
+			$(this).siblings().delay(600).velocity({opacity: 1});
+		});
+
+		$("#closeSwitch").on('click.mainScreen', function(e) {
+			$(this).css('backgroundPositionX', '-40px');
+			$mainScreen.velocity("slideUp");
+			$("*").off(".mainScreen");
+		});
+
+		function switch_main_screen (new_project) {
+			$mainScreen.children().velocity({opacity: 0});
+			$iframe.attr('src', new_project.embed);
+			$("#mainScreen p").html("<strong>"+project.title+"</strong><br>"+project.description);
+		}
 	}
 
 	function add_handlers(){
@@ -116,14 +147,8 @@ $(document).ready(function(){
 					opacity: 1});
 			},
 			click: function(e) {
-				var data_id = $(this).attr('portfolio_data-id');
-				var project;
-				for (var i = 0; i < portfolio_data.length; i++) {
-					if( portfolio_data[i].id == data_id ) {
-						project = portfolio_data[i]; 
-					}
-				};
-				set_main_screen(project);
+				var key = $(this).attr('portfolio_data-key');
+				set_main_screen(portfolio_data[key]);
 			}
 		});
 
