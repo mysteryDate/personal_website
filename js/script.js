@@ -64,13 +64,19 @@ $(document).ready(function(){
 
 		add_handlers();
 		// $("body").css('width', $(window).width());
-		window.setTimeout(function(){change_section()}, 500);
+		// window.setTimeout(function(){change_section()}, 500);
 	}
 
-	function change_section() {
-		// HACK AWAY!
+	function change_section(newSection) {
 
-		// $("#mainScreen").empty();
+		$('.section.selected').velocity('fadeOut');
+		$("#mainNavigation .selected").removeClass("selected");
+		$(newSection).addClass("selected");
+		var textid = '#' + $(newSection).children('h2').html().toLowerCase();
+		$(textid).addClass('selected').velocity('fadeIn');
+
+		$("#mainScreen").css('display', 'none');
+		$("*").off(".mainScreen");
 
 		var $selected = $("#mainNavigation .selected");
 		var selectedWidth = $selected.width();
@@ -86,6 +92,7 @@ $(document).ready(function(){
 	}
 
 	function set_main_screen(project) {
+		
 		var $mainScreen = $("#mainScreen");
 		var $iframe = $("#mainScreen iframe");
 		if($mainScreen.css('display') == "none") { // Create the screen
@@ -94,38 +101,62 @@ $(document).ready(function(){
 				width: windowWidth*0.6,
 				height: windowWidth*0.6*9/16
 			});
-			$mainScreen.velocity("slideDown");
+			$("#closeSwitch").css("backgroundPositionX", 0);
+			if( $iframe.attr("src") != project.embed ) {
+				$mainScreen.children(":not(#closeSwitch)").css({opacity: 0});
+			}
+			$("#line").velocity('scroll');
+			$mainScreen.velocity("slideDown", {
+				complete: function() {
+				 set_iframe(); 
+				}
+			});
 		}
-		switch_main_screen(project);
+		else {
+			var underline = $("#underline")
+			$("#line").velocity('scroll', { 
+				complete: function() { 
+					set_iframe();
+				}
+			});
+		}
 
-		$iframe.on('load.mainScreen', function(e) {
-			$(this).delay(100).velocity({opacity: 1});
-			$(this).siblings().delay(600).velocity({opacity: 1});
+		// See if it's actually changed
+		function set_iframe() {
+			if( $iframe.attr("src") != project.embed ) {
+				$mainScreen.children(":not(#closeSwitch)").velocity({opacity: 0});
+				$iframe.attr('src', project.embed);
+				$("#mainScreen p").html("<strong>"+project.title+"</strong><br>"+project.description);
+			}
+		}
+
+
+		$iframe.one('load.mainScreen', function(e) {
+			$(this).ready(function(){
+				$iframe.delay(100).velocity({opacity: 1});
+				$iframe.siblings().delay(600).velocity({opacity: 1});
+			});
 		});
 
-		$("#closeSwitch").on('click.mainScreen', function(e) {
-			$(this).css('backgroundPositionX', '-40px');
+		$("#closeSwitch").one('click.mainScreen', function(e) {
+			$(this).css('backgroundPositionX', "-40px");
 			$mainScreen.velocity("slideUp");
 			$("*").off(".mainScreen");
 		});
-
-		function switch_main_screen (new_project) {
-			$mainScreen.children().velocity({opacity: 0});
-			$iframe.attr('src', new_project.embed);
-			$("#mainScreen p").html("<strong>"+project.title+"</strong><br>"+project.description);
-		}
 	}
 
 	function add_handlers(){
 
 		// Handlers!
 		$("#mainNavigation div").on('click', function(e){
-			$("#mainNavigation .selected").removeClass("selected");
-			$('.section').css('display', 'none');
-			$(this).addClass("selected");
-			var textid = '#' + $(this).children('h2').html().toLowerCase();
-			$(textid).css('display', 'block')
-			change_section();
+			change_section(this);
+			// var self = this
+			// $('body').velocity('scroll', {
+			// 	complete: function() {
+			// 		$('.section.selected').velocity('fadeOut');
+			// 		change_section(self);
+			// 	}
+			// });
 		});
 		// $("#mainNavigation").on('mousemove', function(e){
 		// 	$("#underline .highlight").first()
