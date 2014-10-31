@@ -71,7 +71,8 @@ $(document).ready(function(){
 					if (portfolio_data[entry].priority == priority ) {
 						$('#'+portfolio_data[entry].category).append("<div class='portfolioEntry' portfolio_data-key="+entry+"></div>");
 						$('#'+portfolio_data[entry].category+' .portfolioEntry').last()
-							.append("<img src='bin/portfolio_thumbnails/"+portfolio_data[entry].thumbnail+"'></img>"
+							.append("<img src='bin/portfolio_thumbnails/"+portfolio_data[entry].thumbnail+"'></img>"+
+								"<div class='dummy'></div>"
 								+"<p>"+portfolio_data[entry].year+" - "+portfolio_data[entry].title);
 					};
 				};
@@ -90,7 +91,7 @@ $(document).ready(function(){
 
 	function change_section(newSection) {
 
-		$('.section.selected').velocity('fadeOut');
+		$('.section.selected').velocity('fadeOut').removeClass("selected");
 		$("#mainNavigation .selected").removeClass("selected");
 		$(newSection).addClass("selected");
 		var textid = '#' + $(newSection).children('h2').html().toLowerCase();
@@ -119,8 +120,8 @@ $(document).ready(function(){
 		if($mainScreen.css('display') == "none") { // Create the screen
 			var windowWidth = $(window).width();
 			$iframe.css({
-				width: windowWidth*0.6,
-				height: windowWidth*0.6*9/16
+				width: windowWidth*0.75,
+				height: windowWidth*0.75*9/16
 			});
 			$("#closeSwitch").css("backgroundPositionX", 0);
 			if( $iframe.attr("src") != project.embed ) {
@@ -196,13 +197,13 @@ $(document).ready(function(){
 		$('.portfolioEntry img').on({
 			mouseenter: function(e){
 				$(this).velocity({opacity: 0.5});
-				$(this).siblings().velocity({
-					backgroundColorAlpha: 0.5
+				$(this).siblings('p').velocity({
+					backgroundColorAlpha: 0.8
 				});
 			},
 			mouseleave: function(e) {
 				$(this).velocity({opacity: 1});
-				$(this).siblings().velocity({
+				$(this).siblings('p').velocity({
 					backgroundColorAlpha: 0.2
 				});
 			},
