@@ -85,6 +85,8 @@ $(document).ready(function(){
 
 		add_handlers();
 
+		window.onresize();
+
 		$("#portfolio").ready(function(){
 			$(".startHidden").velocity({opacity: 1});
 			window.setTimeout(function(){
@@ -192,18 +194,19 @@ $(document).ready(function(){
 				.css("left", $(self).position().left - 2);
 		});
 
+		var fade_duration = 200;
 		$('.portfolioEntry img').on({
 			mouseenter: function(e){
-				$(this).velocity({opacity: 0.5});
+				$(this).velocity({opacity: 0.5}, {duration: fade_duration});
 				$(this).siblings('p').velocity({
 					backgroundColorAlpha: 0.8
-				});
+				}, {duration: fade_duration});
 			},
 			mouseleave: function(e) {
-				$(this).velocity({opacity: 1});
+				$(this).velocity({opacity: 1}, {duration: fade_duration});
 				$(this).siblings('p').velocity({
 					backgroundColorAlpha: 0.2
-				});
+				}, {duration: fade_duration});
 			},
 			click: function(e) {
 				var key = $(this).parent().attr('portfolio_data-key');
@@ -212,4 +215,12 @@ $(document).ready(function(){
 		});
 	}
 
+	window.onresize = function(e) {
+		if($(window).width() > 1300) {
+			$(".panel div.portfolioEntry").css('width', '50%');
+		}
+		else {
+			$(".panel div.portfolioEntry").css('width', '100%');
+		}
+	}
 });
