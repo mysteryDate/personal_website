@@ -1,3 +1,5 @@
+/* rgb(149,64,181) */
+
 /**************/
 /* Main stuff */
 /**************/
@@ -39,14 +41,25 @@
 		text-decoration: none;
 	}
 
-	a:visited {
+	a:hover {
+		opacity: 0.5;
+	}
+
+	a:visited, a:link {
 		color: rgb(0,0,238);
+	}
+
+	.startHidden {
+		opacity: 0;
 	}
 
 /*************/
 /* Masthead */
 /************/
 	#mainTitle {
+		margin: 0 2.5%;
+	}
+	#name {
 		font-size: 4em;
 		line-height: 1;
 		font-family: myFranny;
@@ -54,6 +67,9 @@
 
 	#gifLogo {
 		position: absolute;
+		right: 0;
+		top: 0;
+		width: 7.1em;
 	}
 
 /**************/
@@ -71,6 +87,10 @@
 	    width: auto;
 	    white-space: nowrap; /* Thanks to Herb Caudill comment */
 	    cursor: pointer;
+	}
+
+	#mainNavigation div:hover {
+		opacity: 0.5;
 	}
 
 	#mainNavigation h2 {
@@ -104,6 +124,8 @@
 		height: 1px;
 		background-color: black;
 		z-index: -1;
+		width: 95%;
+		margin-left: 2.5%;
 	}
 
 	#underline .highlight {
@@ -121,6 +143,7 @@
 		#mainScreen {
 			/*border-top: 1px solid black;*/
 			border-bottom: 1px solid black;
+			margin: 0 2.5%;
 			background: radial-gradient(ellipse at center, #c9c9c9 0%,#ffffff 98%);
 			position: relative;
 			display: none;
@@ -128,13 +151,13 @@
 		}
 
 		#mainScreen iframe {
-			width: 60%;
-			margin: 1em 20% 0 20%;
+			/*width: 80%;*/
+			margin: 1em 12.5% 0 12.5%;
 			opacity: 0;
 		}
 
 		#mainScreen p {
-			margin: 1em 20%;
+			margin: 1em 12.5%;
 			opacity: 0;
 		}
 
@@ -154,16 +177,78 @@
 		display: none;
 	}
 
-	.panel div {
-		width: 500px;
-		height: 281px;
+	.panel div.portfolioEntry {
+		width: 100%;
 		display: inline-block;
 		overflow: hidden;
+		cursor: pointer;
+		position: relative;
+		vertical-align: top;
+	}
+
+	.dummy {
+		/* A weird trick to enforce a 16:9 
+		aspect ratio */
+		padding-top: 57%;
 	}
 
 	#portfolio img {
+		position: absolute;
+		margin: auto 0;
 		width: 100%;
 		height: 100%;
 	}
 
+	.panel {
+		margin: 0;
+		width: 45%;
+		display: inline-block;
+	}
 
+	.panel#interaction {
+		margin-left: 5%;
+	}
+
+	.panel#webdesign h2 {
+		/*text-align: right;*/
+	}
+
+	.panel div p {
+		margin: 0;
+		z-index: 1;
+		position: absolute;
+		bottom: 0;
+		padding: 0 5px;
+		color: white;
+		background: hsla(240, 5%, 15%, 0.2);
+	}
+
+/*************/
+/*    CV    */
+/*************/
+	#cv {
+		margin: 0 5%;
+	}
+
+/*************/
+/* contact   */
+/*************/
+	#contact {
+		margin: 0 5%;
+	}
+
+/*************/
+/* footer   */
+/*************/
+	#footer {
+		margin: 2em 2.5% 0 2.5%;
+		color: hsl(0, 0%, 63%);
+		border-top: 1px solid;
+		text-align: right;
+		font-size: 0.8em;
+		opacity: 0;
+	}
+
+	#footer p {
+		margin: 0;
+	}
