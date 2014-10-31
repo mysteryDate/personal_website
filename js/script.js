@@ -129,6 +129,8 @@ $(document).ready(function(){
 		var $iframe = $("#mainScreen iframe");
 		if($mainScreen.css('display') == "none") { // Create the screen
 			var windowWidth = $(window).width();
+			var windowHeight = $(window).height();
+
 			$iframe.css({
 				width: windowWidth*0.75,
 				height: windowWidth*0.75*9/16
