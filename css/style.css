@@ -49,10 +49,17 @@
 		color: rgb(0,0,238);
 	}
 
+	.startHidden {
+		opacity: 0;
+	}
+
 /*************/
 /* Masthead */
 /************/
 	#mainTitle {
+		margin: 0 2.5%;
+	}
+	#name {
 		font-size: 4em;
 		line-height: 1;
 		font-family: myFranny;
@@ -60,6 +67,9 @@
 
 	#gifLogo {
 		position: absolute;
+		right: 0;
+		top: 0;
+		width: 7.1em;
 	}
 
 /**************/
@@ -236,6 +246,7 @@
 		border-top: 1px solid;
 		text-align: right;
 		font-size: 0.8em;
+		opacity: 0;
 	}
 
 	#footer p {
