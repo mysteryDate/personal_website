@@ -92,6 +92,9 @@ $(document).ready(function(){
 			window.setTimeout(function(){
 				change_section($("#mainNavigation div.selected"));
 				$('#footer').css('opacity', 1);
+				window.setTimeout(function(){
+					$('#gifLogo').attr('src', "bin/rainbowblocks4.gif");
+				}, 500);
 			}, 1000);
 		});
 

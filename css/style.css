@@ -67,9 +67,11 @@
 
 	#gifLogo {
 		position: absolute;
-		right: 0;
-		top: 0;
-		width: 7.1em;
+		right: 2.5%;
+		top: 1.4em;
+		width: 13%;
+		z-index: -1;
+		max-width: 7.1em;
 	}
 
 /**************/
