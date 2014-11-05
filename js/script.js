@@ -89,7 +89,7 @@ $(document).ready(function(){
 
 		$("#portfolio").ready(function(){
 			$(".startHidden").velocity({opacity: 1});
-			$('#gifLogo').attr('src', "bin/rainbowblocks4.gif");
+			$('#gifLogo').attr('src', "bin/logo.gif");
 			window.setTimeout(function(){
 				change_section($("#mainNavigation div.selected"));
 				$('#footer').css('opacity', 1);
