@@ -31,7 +31,6 @@ $(document).ready(function(){
 	});
 
 	var NUM_HIGHLIGHTS = 15;
-	// Lets openFrameworks this shiz
 	function setup() {
 
 		var $selected = $("#mainNavigation .selected");
