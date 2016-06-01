@@ -219,7 +219,10 @@ $(document).ready(function(){
 
 	window.onresize = function(e) {
 		if($(window).width() > 1300) {
-			$(".panel div.portfolioEntry").css('width', '50%');
+			$(".panel div.portfolioEntry").css('width', '33%');
+		}
+		else if($(window).width() > 1000) {
+			$(".panel div.portfolioEntry").css('width', '49%');
 		}
 		else {
 			$(".panel div.portfolioEntry").css('width', '100%');

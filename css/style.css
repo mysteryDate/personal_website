@@ -181,12 +181,13 @@
 	}
 
 	.panel div.portfolioEntry {
-		width: 100%;
+		width: 49%;
 		display: inline-block;
 		overflow: hidden;
 		cursor: pointer;
 		position: relative;
 		vertical-align: top;
+		padding: 1px;
 	}
 
 	.dummy {
@@ -214,6 +215,11 @@
 
 	.panel#webdesign h2 {
 		margin-right: 5%;
+	}
+	.panel#all {
+		margin-left: 5%;
+		margin-top: 2%;
+		width: 90%;
 	}
 
 	.panel div p {
