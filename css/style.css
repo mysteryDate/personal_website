@@ -187,7 +187,7 @@
 		cursor: pointer;
 		position: relative;
 		vertical-align: top;
-		padding: 1px;
+		padding: 2px;
 	}
 
 	.dummy {
@@ -217,9 +217,9 @@
 		margin-right: 5%;
 	}
 	.panel#all {
-		margin-left: 5%;
+		margin-left: 3%;
 		margin-top: 2%;
-		width: 90%;
+		width: 94%;
 	}
 
 	.panel div p {
