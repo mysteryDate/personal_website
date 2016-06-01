@@ -54,8 +54,8 @@
     "name": "Boulevard",
     "category": "webdesign",
     "thumbnail": "boulevard.jpg",
-    "embed": "http://www.boulevardtranslation.song-swap.com",
-    "link": "http://www.boulevardtranslation.song-swap.com",
+    "embed": "http://www.boulevard.song-swap.com",
+    "link": "http://www.boulevard.song-swap.com",
     "title": "Traduction Boulevard Translation",
     "description": "Creation of a biligual website for the Boulevard translation group"
   },
@@ -126,9 +126,45 @@
     "name": "Superformula!",
     "category": "webdesign",
     "thumbnail": "superformula.jpg",
-    "embed": "http://mysterydate.github.io/superFormulaGenerator/",
-    "link": "http://mysterydate.github.io/superFormulaGenerator/",
+    "embed": "http://mysterydate.github.io/superFormulaGenerator",
+    "link": "http://mysterydate.github.io/superFormulaGenerator",
     "title": "Superformula shape generator with WebGL",
-    "description": "Create 3D shapes natively in the browser"
+    "description": "Create 3D shapes natively in the browser based on Johan Gielis' superformula."
+  },
+  {
+    "id": 11,
+    "priority": 3,
+    "year": 2015,
+    "name": "The InnerFriend",
+    "category": "interaction",
+    "thumbnail": "innerfriend.jpg",
+    "embed": "http://aaronk.is/2XXM2I3L474DK5DT/InnerFriend_trailer.mp4",
+    "link": "http://aaronk.is/2XXM2I3L474DK5DT/InnerFriend_trailer.mp4",
+    "title": "The InnerFriend",
+    "description": "Technical artist for a kinect-based XBOX One game currently in production."
+  },
+  {
+    "id": 12,
+    "priority": 2,
+    "year": 2015,
+    "name": "Igloofest",
+    "category": "interaction",
+    "thumbnail": "sapporo.jpg",
+    "embed": "http://player.vimeo.com/video/152848205",
+    "link": "https://vimeo.com/152848205",
+    "title": "Sapporo Hunt @ Igloofest",
+    "description": "Programmed an interactive installation for Montréal's Igloofest 2015"
+  },
+  {
+    "id": 13,
+    "priority": 2,
+    "year": 2016,
+    "name": "Humtap",
+    "category": "interaction",
+    "thumbnail": "humtap.jpg",
+    "embed": "http://mysterydate.github.io/superFormulaGenerator",
+    "link": "http://mysterydate.github.io/superFormulaGenerator",
+    "title": "Superformula shape generator with WebGL",
+    "description": "Create 3D shapes natively in the browser based on Johan Gielis' superformula."
   }
 ]
