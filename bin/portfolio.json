@@ -54,8 +54,8 @@
     "name": "Boulevard",
     "category": "webdesign",
     "thumbnail": "boulevard.jpg",
-    "embed": "http://www.boulevardtranslation.com",
-    "link": "http://www.boulevardtranslation.com",
+    "embed": "http://www.boulevardtranslation.song-swap.com",
+    "link": "http://www.boulevardtranslation.song-swap.com",
     "title": "Traduction Boulevard Translation",
     "description": "Creation of a biligual website for the Boulevard translation group"
   },
@@ -66,8 +66,8 @@
     "name": "Elrichman",
     "category": "webdesign",
     "thumbnail": "elrichman.jpg",
-    "embed": "http://www.elrichman.com",
-    "link": "http://www.elrichman.com",
+    "embed": "http://www.elrichman.song-swap.com",
+    "link": "http://www.elrichman.song-swap.com",
     "title": "Elrichman.com",
     "description": "Design of a website for Elrichman, the greatest musician of our time."
   },
@@ -78,8 +78,8 @@
     "name": "MissElizabeth",
     "category": "webdesign",
     "thumbnail": "misselizabeth.jpg",
-    "embed": "http://www.misselizabethmusic.com",
-    "link": "http://www.misselizabethmusic.com",
+    "embed": "http://www.misselizabethmusic.song-swap.com",
+    "link": "http://www.misselizabethmusic.song-swap.com",
     "title": "MissElizabethMusic.com",
     "description": "The website of Miss Elizabeth, a band from Toronto"
   },
@@ -90,8 +90,8 @@
     "name": "Farragoes",
     "category": "webdesign",
     "thumbnail": "farragoes.png",
-    "embed": "http://www.farragoes.net",
-    "link": "http://www.farragoes.net",
+    "embed": "http://www.farragoes.song-swap.com",
+    "link": "http://www.farragoes.song-swap.com",
     "title": "Farragoes.net",
     "description": "The website of Farragoes, a solo-artist from Toronto"
   },
@@ -118,5 +118,17 @@
     "link": "http://mysterydate.github.io/orbits",
     "title": "Orbits: an in-browser gravity game",
     "description": "Try it! Click (and hold and drag) on the screen above. Press 'c' to clear."
+  },
+  {
+    "id": 10,
+    "priority": 3,
+    "year": 2015,
+    "name": "Superformula!",
+    "category": "webdesign",
+    "thumbnail": "superformula.jpg",
+    "embed": "http://mysterydate.github.io/superFormulaGenerator/",
+    "link": "http://mysterydate.github.io/superFormulaGenerator/",
+    "title": "Superformula shape generator with WebGL",
+    "description": "Create 3D shapes natively in the browser"
   }
 ]
