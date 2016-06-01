@@ -160,11 +160,11 @@
     "priority": 2,
     "year": 2016,
     "name": "Humtap",
-    "category": "interaction",
+    "category": "webdesign",
     "thumbnail": "humtap.jpg",
-    "embed": "http://mysterydate.github.io/superFormulaGenerator",
-    "link": "http://mysterydate.github.io/superFormulaGenerator",
-    "title": "Superformula shape generator with WebGL",
-    "description": "Create 3D shapes natively in the browser based on Johan Gielis' superformula."
+    "embed": "http://www.humtap.com",
+    "link": "http://www.humtap.com",
+    "title": "Humtap",
+    "description": "Developed algorithmic musical composition for iOS app"
   }
 ]
