@@ -166,5 +166,29 @@
     "link": "http://www.humtap.com",
     "title": "Humtap",
     "description": "Developed algorithmic musical composition for iOS app"
+  },
+  {
+    "id": 14,
+    "priority": 4,
+    "year": 2017,
+    "name": "ScribbleChat",
+    "category": "all",
+    "thumbnail": "scribblechat.jpg",
+    "embed": "https://getscribblechat.com/",
+    "link": "http://www.getScribblechat.com",
+    "title": "ScribbleChat",
+    "description": "Technical artist for a webGL-based text-messaging app"
+  },
+  {
+    "id": 15,
+    "priority": 4,
+    "year": 2017,
+    "name": "YGIAW",
+    "category": "all",
+    "thumbnail": "fs-video.jpg",
+    "embed": "http://ygiaw.futurestatesband.com/",
+    "link": "http://song-swap.com/fs",
+    "title": "YGIAW",
+    "description": "Created an interactive video for the Canadian band Future States"
   }
 ]
