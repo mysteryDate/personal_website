@@ -190,5 +190,17 @@
     "link": "http://song-swap.com/fs",
     "title": "YGIAW",
     "description": "Created an interactive video for the Canadian band Future States"
+  },
+  {
+    "id": 16,
+    "priority": 5,
+    "year": 2018,
+    "name": "RippleStep",
+    "category": "all",
+    "thumbnail": "ripple-step.jpg",
+    "embed": "http://mysterydate.github.io/ripple-step",
+    "link": "http://mysterydate.github.io/ripple-step",
+    "title": "Ripple Step",
+    "description": "A water step sequencer. Sound on!"
   }
 ]
