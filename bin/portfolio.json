@@ -170,7 +170,7 @@
   {
     "id": 14,
     "priority": 4,
-    "year": 2017,
+    "year": 2018,
     "name": "ScribbleChat",
     "category": "all",
     "thumbnail": "scribblechat.jpg",
@@ -202,5 +202,17 @@
     "link": "http://mysterydate.github.io/ripple-step",
     "title": "Ripple Step",
     "description": "A water step sequencer. Sound on!"
+  },
+  {
+    "id": 17,
+    "priority": 4,
+    "year": 2017,
+    "name": "Handwriting.io",
+    "category": "all",
+    "thumbnail": "handwriting.jpg",
+    "embed": "https://handwriting.io/",
+    "link": "https://handwriting.io/",
+    "title": "Handwriting.io",
+    "description": "Helped develop a dynamic handwriting API"
   }
 ]
