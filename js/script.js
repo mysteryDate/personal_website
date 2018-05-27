@@ -105,6 +105,7 @@ $(document).ready(function(){
 		$("#mainNavigation .selected").removeClass("selected");
 		$(newSection).addClass("selected");
 		var textid = '#' + $(newSection).children('h2').html().toLowerCase();
+		mixpanel.track(textid);
 		$(textid).addClass('selected').velocity('fadeIn');
 
 		$("#mainScreen").css('display', 'none');
@@ -125,6 +126,7 @@ $(document).ready(function(){
 
 	function set_main_screen(project) {
 
+		mixpanel.track(project.name);
 		var $mainScreen = $("#mainScreen");
 		var $iframe = $("#mainScreen iframe");
 		if($mainScreen.css('display') == "none") { // Create the screen
