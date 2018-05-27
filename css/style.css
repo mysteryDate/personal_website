@@ -45,6 +45,15 @@
 		opacity: 0.5;
 	}
 
+	img.portfolio {
+		filter: grayscale(100);
+		transition: filter 1s
+	}
+
+	img.portfolio:hover {
+		filter: grayscale(0);
+	}
+
 	a:visited, a:link {
 		color: rgb(0,0,238);
 	}
@@ -191,7 +200,7 @@
 	}
 
 	.dummy {
-		/* A weird trick to enforce a 16:9 
+		/* A weird trick to enforce a 16:9
 		aspect ratio */
 		padding-top: 57%;
 	}

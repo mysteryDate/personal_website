@@ -69,7 +69,7 @@ $(document).ready(function(){
 					if (portfolio_data[entry].priority == priority ) {
 						$('#'+portfolio_data[entry].category).append("<div class='portfolioEntry' portfolio_data-key="+entry+"></div>");
 						$('#'+portfolio_data[entry].category+' .portfolioEntry').last()
-							.append("<img src='bin/portfolio_thumbnails/"+portfolio_data[entry].thumbnail+"'></img>"+
+							.append("<img src='bin/portfolio_thumbnails/"+portfolio_data[entry].thumbnail+"' class='portfolio'></img>"+
 								"<div class='dummy'></div>"
 								+"<p>"+portfolio_data[entry].year+" - "+portfolio_data[entry].title);
 					};
@@ -96,7 +96,7 @@ $(document).ready(function(){
 		});
 
 		// $("body").css('width', $(window).width());
-		
+
 	}
 
 	function change_section(newSection) {
@@ -117,14 +117,14 @@ $(document).ready(function(){
 			$(this).delay(i*500/NUM_HIGHLIGHTS).velocity({
 				width: selectedWidth + 4,
 				left: $selected.position().left - 2
-			}, 
+			},
 			1000,
 			[250,15]);
 		});
 	}
 
 	function set_main_screen(project) {
-		
+
 		var $mainScreen = $("#mainScreen");
 		var $iframe = $("#mainScreen iframe");
 		if($mainScreen.css('display') == "none") { // Create the screen
@@ -142,14 +142,14 @@ $(document).ready(function(){
 			$("#line").velocity('scroll');
 			$mainScreen.velocity("slideDown", {
 				complete: function() {
-				 set_iframe(); 
+				 set_iframe();
 				}
 			});
 		}
 		else {
 			var underline = $("#underline")
-			$("#line").velocity('scroll', { 
-				complete: function() { 
+			$("#line").velocity('scroll', {
+				complete: function() {
 					set_iframe();
 				}
 			});
@@ -196,16 +196,14 @@ $(document).ready(function(){
 				.css("left", $(self).position().left - 2);
 		});
 
-		var fade_duration = 200;
+		var fade_duration = 1000;
 		$('.portfolioEntry img').on({
 			mouseenter: function(e){
-				$(this).velocity({opacity: 0.5}, {duration: fade_duration});
 				$(this).siblings('p').velocity({
 					backgroundColorAlpha: 0.8
 				}, {duration: fade_duration});
 			},
 			mouseleave: function(e) {
-				$(this).velocity({opacity: 1}, {duration: fade_duration});
 				$(this).siblings('p').velocity({
 					backgroundColorAlpha: 0.2
 				}, {duration: fade_duration});
