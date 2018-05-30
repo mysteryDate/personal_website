@@ -138,8 +138,8 @@
     "name": "InnerFriend",
     "category": "all",
     "thumbnail": "innerfriend.jpg",
-    "embed": "http://aaronk.is/2XXM2I3L474DK5DT/InnerFriend_trailer.mp4",
-    "link": "http://aaronk.is/2XXM2I3L474DK5DT/InnerFriend_trailer.mp4",
+    "embed": "http://theinnerfriend.com/",
+    "link": "http://theinnerfriend.com/",
     "title": "The InnerFriend",
     "description": "Technical artist for a kinect-based XBOX One game currently in production."
   },
@@ -174,8 +174,8 @@
     "name": "ScribbleChat",
     "category": "all",
     "thumbnail": "scribblechat.jpg",
-    "embed": "https://getscribblechat.com/",
-    "link": "http://www.getScribblechat.com",
+    "embed": "https://www.youtube.com/watch?v=sR37LeJdUJ4",
+    "link": "https://www.youtube.com/watch?v=sR37LeJdUJ4",
     "title": "ScribbleChat",
     "description": "Technical artist for a webGL-based text-messaging app"
   },
@@ -205,8 +205,8 @@
   },
   {
     "id": 17,
-    "priority": 4,
-    "year": 2017,
+    "priority": 5,
+    "year": 2018,
     "name": "Handwriting.io",
     "category": "all",
     "thumbnail": "handwriting.jpg",
