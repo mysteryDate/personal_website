@@ -50,21 +50,6 @@
 		transition: filter 1s
 	}
 
-	.portfolio-overlay {
-		position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-		p {
-			position: static;
-		}
-	}
-
-	.portfolio-overlay p {
-		position: static;
-	}
-
 	/* img.portfolio:hover {
 		filter: grayscale(0);
 	} */
@@ -220,6 +205,21 @@
 		padding-top: 57%;
 	}
 
+	#portfolio-overlay {
+		position: absolute;
+		top: 0;
+	}
+
+	#portfolio-overlay .screen {
+		position: absolute;
+		top: 0;
+		size: 100%;
+		width: 100%;
+		height: 100%;
+		background-color: pink;
+		opacity: 0.4;
+	}
+
 	#portfolio img {
 		position: absolute;
 		margin: auto 0;
@@ -246,7 +246,7 @@
 		width: 94%;
 	}
 
-	.panel div p {
+	.panel div p.footer {
 		margin: 0;
 		z-index: 1;
 		position: absolute;

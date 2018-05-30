@@ -68,7 +68,7 @@ $(document).ready(function(){
             $('#'+portfolio_data[entry].category+' .portfolioEntry').last()
             .append("<img src='bin/portfolio_thumbnails/"+portfolio_data[entry].thumbnail+"' class='portfolio'></img>"+
             "<div class='dummy'></div>"
-            +"<p>"+portfolio_data[entry].year+" - "+portfolio_data[entry].title);
+            +"<p class='footer'>"+portfolio_data[entry].year+" - "+portfolio_data[entry].title);
           };
         };
       };
@@ -120,17 +120,18 @@ $(document).ready(function(){
   function set_mobile_overlay(section, data) {
     window.section = section;
     window.data = data;
+    var $pOverlay = $("#portfolio-overlay")
+    $pOverlay.children(".text").empty();
     var i = section.children("img");
     if (section.hasClass("hasOverlay")) {
       i.css("filter", "grayscale(0)");
-      section.children(".dummy").append(`
-        <div class=portfolio-overlay>
-          <h1>${data.title}</h1>
-          <h2>${data.year}</h2>
-          <p>${data.description}</p>
-          <a href=${data.link}>Project Page</a>
-        </div>
+      $pOverlay.children(".text").append(`
+        <h1>${data.title}</h1>
+        <h2>${data.year}</h2>
+        <p>${data.description}</p>
+        <a href=${data.link}>Project Page</a>
       `);
+      section.children(".dummy").append($pOverlay);
     } else {
       i.css("filter", "grayscale(100)");
     }
