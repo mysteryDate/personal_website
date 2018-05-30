@@ -218,7 +218,7 @@ $(document).ready(function(){
           if (gl) {
             gl.remove();
           }
-          section.append("<a id='goLink' href="+data.link+"></a>");
+          section.append("<a target='_blank' id='goLink' href="+data.link+"></a>");
           document.getElementById("goLink").click();
         } else {
           set_main_screen(data);
