@@ -50,9 +50,24 @@
 		transition: filter 1s
 	}
 
-	img.portfolio:hover {
-		filter: grayscale(0);
+	.portfolio-overlay {
+		position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+		p {
+			position: static;
+		}
 	}
+
+	.portfolio-overlay p {
+		position: static;
+	}
+
+	/* img.portfolio:hover {
+		filter: grayscale(0);
+	} */
 
 	a:visited, a:link {
 		color: rgb(0,0,238);
