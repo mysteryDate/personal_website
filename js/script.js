@@ -214,6 +214,10 @@ $(document).ready(function(){
         var section = $(this).parent();
         var data = portfolio_data[section.attr('portfolio_data-key')];
         if (isMobile || !isMobile) { // TODO I kinda like this behaviour better in general
+          var gl = document.getElementById("goLink");
+          if (gl) {
+            gl.remove();
+          }
           section.append("<a id='goLink' href="+data.link+"></a>");
           document.getElementById("goLink").click();
         } else {
