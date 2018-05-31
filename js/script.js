@@ -17,7 +17,6 @@ function PortfolioItem() {
 }
 
 $(document).ready(function(){
-
   // Read in JSON
   var json_data;
   var portfolio_data = {}; //HACK
@@ -32,7 +31,6 @@ $(document).ready(function(){
 
   var NUM_HIGHLIGHTS = 15;
   function setup() {
-
     var $selected = $("#mainNavigation .selected");
     var selectedWidth = $selected.width();
     var textHeight = $selected.height();
@@ -44,13 +42,19 @@ $(document).ready(function(){
     });
 
     // Create underlining
-    for (var i = 0; i < NUM_HIGHLIGHTS; i++) {
+    for (var i = 0; i < NUM_HIGHLIGHTS + 1; i++) {
       $('#underline').append("<div class='highlight'></div>");
     };
     $("#underline .highlight").each(function(i, elem) {
       $(this).css({
-        backgroundColor: "hsl("+i*360/NUM_HIGHLIGHTS+", 100%, 50%)"
+        backgroundColor: "hsl("+(i - 1)*360/NUM_HIGHLIGHTS+", 100%, 50%)"
       });
+      if (i === 0) {
+        $(this).css({
+          backgroundColor: "white",
+          opacity: "1"
+        });
+      }
     });
 
     var top_priority = 0;
@@ -94,13 +98,9 @@ $(document).ready(function(){
         $('#footer').css('opacity', 1);
       }, 1000);
     });
-
-    // $("body").css('width', $(window).width());
-
   }
 
   function change_section(newSection) {
-
     $('.section.selected').velocity('fadeOut').removeClass("selected");
     $("#mainNavigation .selected").removeClass("selected");
     $(newSection).addClass("selected");
@@ -125,7 +125,6 @@ $(document).ready(function(){
   }
 
   function set_main_screen(project) {
-
     mixpanel.track(project.name);
     var $mainScreen = $("#mainScreen");
     var $iframe = $("#mainScreen iframe");
@@ -193,9 +192,10 @@ $(document).ready(function(){
     });
 
     $("#mainNavigation div").on('mouseenter', function(e){
-      var self = this;
       $("#underline .highlight").first()
-        .css("left", $(self).position().left - 2);
+        .css("left", $(this).position().left - 2).bind(this);
+      $($("#underline .highlight")[1])
+        .css("left", $(this).position().left - 2).bind(this);
     });
 
     var fade_duration = 1000;

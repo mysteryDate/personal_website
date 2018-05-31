@@ -126,6 +126,7 @@
 
 	#underline {
 		position: relative;
+		top: -10px;
 		height: 1em;
 		z-index: 1;
 	}
