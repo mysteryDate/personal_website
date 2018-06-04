@@ -213,6 +213,7 @@ $(document).ready(function(){
       click: function(e) {
         var section = $(this).parent();
         var data = portfolio_data[section.attr('portfolio_data-key')];
+        mixpanel.track(data.name);
         if (isMobile || !isMobile) { // TODO I kinda like this behaviour better in general
           var gl = document.getElementById("goLink");
           if (gl) {
