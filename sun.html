@@ -14,9 +14,17 @@
 </body>
 <script type="text/javascript">
 "use strict";
-const w = window.innerWidth;
-const h = window.innerHeight;
-const r = Math.min(w, h);
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+let w, h, r;
+
+function init() {
+  w = window.innerWidth;
+  h = window.innerHeight;
+  r = Math.min(w, h);
+  canvas.width = w;
+  canvas.height = h;
+}
 
 function rand(x) {
   const y = Math.sin(x * 100000.0);
@@ -39,54 +47,58 @@ function noise(t) {
   return mix(rand(i), rand(i + 1), smoothstep(0, 1, f));
 }
 
-function noiseColor(time, seed, frequency) {
-  const fr = frequency * 1.2 * (rand(seed + 23) * 2 - 1);
-  const fg = frequency * 1.2 * (rand(seed + 17) * 2 - 1);
-  const fb = frequency * 1.2 * (rand(seed + 41) * 2 - 1);
-  const red = noise(time * fr + 200 * rand(seed + 31));
-  const green = noise(time * fg + 200 * rand(seed + 55));
-  const blue = noise(time * fb + 200 * rand(seed + 101));
-  return `rgb(${red * 255}, ${green * 255}, ${blue * 255})`;
+function noiseColor(time, seed, period, offset) {
+  const fr = 1.2 * (rand(seed + 23) * 2 - 1) / period;
+  const fg = 1.2 * (rand(seed + 17) * 2 - 1) / period;
+  const fb = 1.2 * (rand(seed + 41) * 2 - 1) / period;
+  const red = noise(time * fr + 200 * rand(seed + 31) + offset);
+  const green = noise(time * fg + 200 * rand(seed + 55) + offset);
+  const blue = noise(time * fb + 200 * rand(seed + 101) + offset);
+  return [red * 255, green * 255, blue * 255];
 }
 
-const canvas = document.getElementById("canvas");
-canvas.width = w;
-canvas.height = h;
-const ctx = canvas.getContext("2d");
-
-const minimumAlpha = 0.5;
+const minimumAlpha = 0.2;
 const maxSuns = 100;
 const seed = Math.random() * 1000;
+const bgColorPeriod = 17.987;
+const fgColorPeriod = 4.4395;
+const motionPeriod = 30.31;
+const sunPeriod = 10.12;
 function draw() {
   const t = performance.now() / 1000 + seed;
-  // background color
-  const br = (noise(t / 3.93 + 401)) * 255;
-  const bg = (noise(t / 3.97 + 100)) * 255;
-  const bb = (noise(t / 4.17 + 95)) * 255;
-  ctx.fillStyle = `rgb(${br}, ${bg}, ${bb})`;
-  ctx.fillStyle = noiseColor(t, seed + 3124, 1/10);
+  const bg = noiseColor(t, seed + 3124, bgColorPeriod, 0);
+  ctx.fillStyle = `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`;
   ctx.fillRect(0, 0, w, h);
 
-  const numSuns = maxSuns * Math.abs(Math.sin(t / 10) ** 3) + 1;
-  for (let i = numSuns - 1; i >= 0; i--) {
+  const numSuns = (maxSuns - 1) * Math.abs(Math.sin(t / sunPeriod) ** 3) + 1;
+  for (let i = Math.floor(numSuns - 1); i >= 0; i--) {
     const j = i / numSuns;
-    const xRadius = 3 * r/8 * (noise(t / 3.31 + 430 + j)) + r/8;
-    const yRadius = 3 * r/8 * (noise(t / 3.51 + 732 + j)) + r/8;
-    const rotation = Math.PI * 2 * (noise(t / 2.51 + 532 + j))
-    // ellipse color
-    const er = (noise(t / 2.11 + 200 + j)) * 255;
-    const eg = (noise(t / 2.15 + 157 + j)) * 255;
-    const eb = (noise(t / 2.99 + 97 + j)) * 255;
-    const alpha = ((1 - minimumAlpha) * noise(t / 5.51 + 732 + j)
-      + minimumAlpha) / numSuns;
+    const xRadius = 3 * r/8 * noise(t / motionPeriod + 430 + j) + r/8;
+    const yRadius = 3 * r/8 * noise(t / (motionPeriod + 0.53) + 732 + j) + r/8;
+    const rotation = Math.PI * 2 * noise(t / (motionPeriod - 0.49) + 532 + j);
+
+    const fg = noiseColor(t, seed + 1124, fgColorPeriod, 2 * j *
+      noise(t / fgColorPeriod / 1.02));
+    let alpha = 1 / (numSuns ** 0.5) * ((-j + 1) + 1);
+    const adjust = (1 - minimumAlpha) * noise(t / (fgColorPeriod * 1.07) + 732)
+      + minimumAlpha;
+    alpha *= adjust;
+    if (i == Math.floor(numSuns - 1) && i != 0) {
+      alpha *= numSuns - Math.floor(numSuns);
+    }
 
     ctx.beginPath();
     ctx.ellipse(w/2, h/2, xRadius, yRadius, rotation, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${er}, ${eg}, ${eg}, ${alpha})`;
+    ctx.fillStyle = `rgba(${fg[0]}, ${fg[1]}, ${fg[2]}, ${alpha})`;
     ctx.fill();
   }
   requestAnimationFrame(draw);
 }
+init();
 draw();
+
+window.onresize = function() {
+  init();
+}
 </script>
 </html>
