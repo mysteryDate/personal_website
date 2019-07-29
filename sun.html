@@ -79,6 +79,7 @@ function draw() {
     const xRadius = 3 * r/8 * noise(t / motionPeriod + 430 + j) + r/8;
     const yRadius = 3 * r/8 * noise(t / (motionPeriod + 0.53) + 732 + j) + r/8;
     const rotation = Math.PI * 2 * noise(t / (motionPeriod - 0.49) + 532 + j);
+    // const rotation = 0;
 
     const fg = noiseColor(t, seed + 1124, fgColorPeriod, 2 * j *
       noise(t / fgColorPeriod / 1.02));
@@ -97,7 +98,8 @@ function draw() {
 
     const xLength = 6 * r/8 * noise(t / motionPeriod + 371 + j) + r/8;
     const yLength = 6 * r/8 * noise(t / (motionPeriod + 0.53) + 461 + j) + r/8;
-    const rectRotation = Math.PI * 2 * noise(t / (motionPeriod - 0.49) + 711 + j);
+    // const rectRotation = Math.PI * 2 * noise(t / (motionPeriod - 0.49) + 711 + j);
+    const rectRotation = 0;
     const rColor = noiseColor(t, seed + 124, fgColorPeriod, 2 * j *
       noise(t / fgColorPeriod / 1.02));
     let rAlpha = 1 / (numSuns ** 0.5) * ((-j + 1) + 1);
@@ -109,13 +111,12 @@ function draw() {
     }
 
     ctx.beginPath();
-    // ctx.rotate(rectRotation);
-    ctx.translate(w/2 - xLength/2, h/2 - yLength/2);
-    ctx.rect(0, 0, xLength, yLength);
+    ctx.translate(w/2, h/2);
+    ctx.rotate(rectRotation);
+    ctx.rect(-xLength/2, -yLength/2, xLength, yLength);
     ctx.fillStyle = `rgba(${rColor[0]}, ${rColor[1]}, ${rColor[2]}, ${rAlpha})`;
     ctx.fill();
-    ctx.translate((xLength - w)/2, (yLength - h)/2);
-    // ctx.rotate(-rectRotation);
+    ctx.setTransform();
 
   }
   requestAnimationFrame(draw);

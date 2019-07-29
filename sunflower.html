@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+  <style type="text/css">
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+const w = window.innerWidth;
+const h = window.innerHeight;
+const canvas = document.createElement("canvas");
+canvas.width = w;
+canvas.height = w;
+document.body.appendChild(canvas);
+const ctx = canvas.getContext("2d");
+
+let a = 0;
+// a = Math.PI * (3 - Math.sqrt(5));
+// a = Math.PI * (Math.sqrt(2));
+var dotSize = 7;
+var spacing = 13;
+
+let r = 0;
+function draw() {
+  ctx.clearRect(0, 0, w, h);
+
+  a += 0.0001;
+  r = 1;
+  for (var i = 0; i < 1000; i++) {
+    ctx.translate(w/2, h/2);
+
+    var dist = spacing * Math.sqrt(r);
+    var angle = a * r;
+
+    var x = dist * Math.cos(angle);
+    var y = dist * Math.sin(angle);
+
+    ctx.translate(x, y);
+
+    ctx.beginPath();
+    ctx.ellipse(0, 0, dotSize, dotSize, 0, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.setTransform();
+    r += 1;
+  }
+
+  requestAnimationFrame(draw);
+}  
+
+draw();
+</script>
+
+</body>
+</html>
