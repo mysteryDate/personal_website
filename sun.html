@@ -14,9 +14,10 @@
 </body>
 <script type="text/javascript">
 "use strict";
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
 let w, h, r;
+const canvas = document.getElementById("canvas");
+init();
+const ctx = canvas.getContext("2d");
 
 function init() {
   w = window.innerWidth;
@@ -59,6 +60,7 @@ function noiseColor(time, seed, period, offset) {
 
 const minimumAlpha = 0.2;
 const maxSuns = 100;
+const minSuns = 1;
 const seed = Math.random() * 1000;
 const bgColorPeriod = 17.987;
 const fgColorPeriod = 4.4395;
@@ -70,7 +72,8 @@ function draw() {
   ctx.fillStyle = `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`;
   ctx.fillRect(0, 0, w, h);
 
-  const numSuns = (maxSuns - 1) * Math.abs(Math.sin(t / sunPeriod) ** 3) + 1;
+  const numSuns = (maxSuns - minSuns) * Math.abs(Math.sin(t / sunPeriod) ** 3) 
+    + minSuns;
   for (let i = Math.floor(numSuns - 1); i >= 0; i--) {
     const j = i / numSuns;
     const xRadius = 3 * r/8 * noise(t / motionPeriod + 430 + j) + r/8;
@@ -91,10 +94,32 @@ function draw() {
     ctx.ellipse(w/2, h/2, xRadius, yRadius, rotation, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${fg[0]}, ${fg[1]}, ${fg[2]}, ${alpha})`;
     ctx.fill();
+
+    const xLength = 6 * r/8 * noise(t / motionPeriod + 371 + j) + r/8;
+    const yLength = 6 * r/8 * noise(t / (motionPeriod + 0.53) + 461 + j) + r/8;
+    const rectRotation = Math.PI * 2 * noise(t / (motionPeriod - 0.49) + 711 + j);
+    const rColor = noiseColor(t, seed + 124, fgColorPeriod, 2 * j *
+      noise(t / fgColorPeriod / 1.02));
+    let rAlpha = 1 / (numSuns ** 0.5) * ((-j + 1) + 1);
+    const rAdjust = (1 - minimumAlpha) * noise(t / (fgColorPeriod * 1.07) + 612)
+      + minimumAlpha;
+    rAlpha *= rAdjust;
+    if (i == Math.floor(numSuns - 1) && i != 0) {
+      rAlpha *= numSuns - Math.floor(numSuns);
+    }
+
+    ctx.beginPath();
+    // ctx.rotate(rectRotation);
+    ctx.translate(w/2 - xLength/2, h/2 - yLength/2);
+    ctx.rect(0, 0, xLength, yLength);
+    ctx.fillStyle = `rgba(${rColor[0]}, ${rColor[1]}, ${rColor[2]}, ${rAlpha})`;
+    ctx.fill();
+    ctx.translate((xLength - w)/2, (yLength - h)/2);
+    // ctx.rotate(-rectRotation);
+
   }
   requestAnimationFrame(draw);
 }
-init();
 draw();
 
 window.onresize = function() {
