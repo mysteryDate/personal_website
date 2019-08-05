@@ -66,15 +66,16 @@ const minimumAlpha = 0.2;
 const maxStars = 100;
 const minStars = 1;
 const seed = Math.random() * 1000;
-const bgColorPeriod = 17.987;
+const bgColorPeriod = 7.987;
 const fgColorPeriod = 4.4395;
 const motionPeriod = 30.31;
 const starPeriod = 10.12;
 
 let numPoints = 8;
 function draw() {
-  let t = performance.now() / 5000 + seed;
-  const bgColor = noiseColor(t, seed + 3124, bgColorPeriod, 0);
+  let t = performance.now() / 1000 + seed;
+  t /= 3;
+  let bgColor = noiseColor(t, seed + 3124, bgColorPeriod, 0);
   ctx.fillStyle = `rgb(${bgColor[0]}, ${bgColor[1]}, ${bgColor[2]})`;
   ctx.fillRect(0, 0, w, h);
 
@@ -94,9 +95,9 @@ function draw() {
 
     const fgColor = noiseColor(t, seed + 27, fgColorPeriod, 2 * j *
       noise(t / fgColorPeriod / 1.32));
-    let rotation = Math.PI * 2 * noise(t / (motionPeriod - 0.39) / 5 + 913 + j / 2 * noise(t / motionPeriod));
-    let r1 = r/2 * noise(t / motionPeriod * 5 + 1351 + j / 2);
-    let r2 = r/2 * noise(t / motionPeriod * 5.5 + 3381 + j / 2);
+    let rotation = Math.PI * 2 * noise(t / (motionPeriod - 0.39) + 913 + j * noise(t / motionPeriod));
+    let r1 = r/2 * noise(t / motionPeriod * 2 + 1351 + j / 2);
+    let r2 = r/2 * noise(t / motionPeriod * 2.5 + 3381 + j / 2);
     ctx.translate(w/2, h/2);
     ctx.rotate(rotation)
     ctx.beginPath();
