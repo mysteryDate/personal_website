@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>convertToBlob on workers vs main thread</title>
+</head>
+<body>
+<script type="text/javascript">
+"use strict";
+function offscreenCanvasToBlobOnWorker() {
+  const offscreenCanvas = new OffscreenCanvas(32, 32);
+  const ofctx = offscreenCanvas.getContext("2d");
+  ofctx.fillStyle = "red";
+  ofctx.fillRect(0, 0, 32, 32);
+  const startTime = performance.now();
+  offscreenCanvas.convertToBlob({type: "image/png"}).then((blob) => {
+    console.log(`Called convertToBlob on worker, took ${performance.now() - startTime} ms`);
+  });
+}
+
+self.addEventListener("message", (e) => {
+  offscreenCanvasToBlobOnWorker();
+});
+</script>
+
+<script type="text/javascript">
+function offscreenCanvasConvertToBlob() {
+  const offscreenCanvas = new OffscreenCanvas(32, 32);
+  const ofctx = offscreenCanvas.getContext("2d");
+  ofctx.fillStyle = "red";
+  ofctx.fillRect(0, 0, 32, 32);
+  const startTime = performance.now();
+  offscreenCanvas.convertToBlob({type: "image/png"}).then((blob) => {
+  console.log(`Called convertToBlob on offscreenCanvas, took ${performance.now() - startTime} ms`);
+  });
+}
+
+window.onload = function() {
+  const worker = new Worker("worker.js");
+  worker.postMessage("start");
+  offscreenCanvasConvertToBlob();
+}
+</script>
+</body>
+</html>
