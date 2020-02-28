@@ -4,7 +4,7 @@
   <title>convertToBlob on workers vs main thread</title>
 </head>
 <body>
-<script type="text/javascript">
+<script type="text/javascript" id="worker">
 "use strict";
 function offscreenCanvasToBlobOnWorker() {
   const offscreenCanvas = new OffscreenCanvas(32, 32);
@@ -35,7 +35,10 @@ function offscreenCanvasConvertToBlob() {
 }
 
 window.onload = function() {
-  const worker = new Worker("worker.js");
+  const workerCode = document.querySelector("#worker").textContent;
+  const blob = new Blob([workerCode], { type: 'text/javascript' });
+  const url = URL.createObjectURL(blob);
+  const worker = new Worker(url);
   worker.postMessage("start");
   offscreenCanvasConvertToBlob();
 }
