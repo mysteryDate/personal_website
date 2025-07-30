@@ -162,8 +162,8 @@
     "name": "Humtap",
     "category": "all",
     "thumbnail": "humtap.jpg",
-    "embed": "http://www.humtap.com",
-    "link": "http://www.humtap.com",
+    "embed": "https://abbeyroadinstitute.co.uk/blog/producing-music-for-ai-with-humtap/",
+    "link": "https://abbeyroadinstitute.co.uk/blog/producing-music-for-ai-with-humtap/",
     "title": "Humtap",
     "description": "Developed algorithmic musical composition for iOS app"
   },
@@ -186,8 +186,8 @@
     "name": "YGIAW",
     "category": "all",
     "thumbnail": "fs-video.jpg",
-    "embed": "http://ygiaw.futurestatesband.com/",
-    "link": "http://song-swap.com/fs",
+    "embed": "https://mysterydate.github.io/fs-video/",
+    "link": "https://mysterydate.github.io/fs-video/",
     "title": "YGIAW",
     "description": "Created an interactive video for the Canadian band Future States"
   },
@@ -202,17 +202,5 @@
     "link": "http://mysterydate.github.io/ripple-step",
     "title": "Ripple Step",
     "description": "A water step sequencer. Sound on!"
-  },
-  {
-    "id": 17,
-    "priority": 5,
-    "year": 2018,
-    "name": "Handwriting.io",
-    "category": "all",
-    "thumbnail": "handwriting.jpg",
-    "embed": "https://handwriting.io/",
-    "link": "https://handwriting.io/",
-    "title": "Handwriting.io",
-    "description": "Helped develop a dynamic handwriting API"
   }
 ]
